@@ -1,11 +1,11 @@
 import { Card, Button } from "react-bootstrap";
 
-const PostCard = ({post: {title, summary, _id}}) => {
+const PostCard = ({post: {title, summary, updatedAt}}) => {
   return (
     <Card style={{ backgroundColor: 'grey', display: 'flex', marginTop: '20px' }}>
       <Card.Body>
         <Card.Title style={{color: "white", fontSize: "30px"}}>{title}</Card.Title>
-        <p style= {{color: 'white'}}>post date</p>
+        <p style= {{color: 'white'}}>{updatedAt}</p>
         <Card.Text style={{color: "white", marginTop: '5%'}}>
           {summary}
         </Card.Text>
