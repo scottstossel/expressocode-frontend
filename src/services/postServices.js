@@ -1,4 +1,6 @@
 import axios from 'axios';
+import fetch from 'isomorphic-fetch';
+
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const getPostsFromApi = async () => {
@@ -11,9 +13,19 @@ export const getSinglePostFromApi = async (id) => {
   return response;
 }
 
-export const postPostToApi = async (post) => {
-  const response = await axios.post(`${apiUrl}/post/post`, post);
-  return response;
+export const createPost = (post, token) => {
+  return fetch(`${apiUrl}/post/post`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Authorization': token
+    },
+    body: blog
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
 }
 
 export const imageUploadToApi = async (id, img) => {

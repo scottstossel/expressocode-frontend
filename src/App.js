@@ -4,6 +4,12 @@ import HomeView from "./views/HomeView";
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import AllPostsView from './views/AllPostsView';
+import SinglePostView from './views/SinglePostView';
+import SingleTopicView from './views/SingleTopicView';
+import LoginView from './views/LoginView';
+import SignUpView from './views/SignUpView';
+import AddPostView from './views/AddPostView';
+import AuthRoute from './components/AuthRoute';
 
 function App() {
   return (
@@ -12,6 +18,11 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomeView}/>
         <Route exact path="/posts" component={AllPostsView}/>
+        <Route exact path="/posts/:_id" component={SinglePostView}/>
+        <Route exact path="/topic/:_id" component={SingleTopicView}/>
+        <Route exact path="/login" component={LoginView}/>
+        <Route exact path="/signup" component={SignUpView}/>
+        <AuthRoute exact path="/createpost" component={AddPostView}/>
       </Switch>
       <Footer />
     </BrowserRouter>

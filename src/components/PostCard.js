@@ -1,6 +1,6 @@
 import { Card, Button } from "react-bootstrap";
 
-const PostCard = ({post: {title, summary, updatedAt}}) => {
+const PostCard = ({post: {title, summary, updatedAt, _id}}) => {
   return (
     <Card style={{ backgroundColor: 'grey', display: 'flex', marginTop: '20px' }}>
       <Card.Body>
@@ -9,7 +9,7 @@ const PostCard = ({post: {title, summary, updatedAt}}) => {
         <Card.Text style={{color: "white", marginTop: '5%'}}>
           {summary}
         </Card.Text>
-        <Button variant="primary">Read post</Button>
+        <Button variant="primary" href={`/posts/${_id}`}>Read post</Button>
       </Card.Body>
     </Card>
   );

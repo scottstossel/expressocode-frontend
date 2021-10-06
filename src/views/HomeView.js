@@ -16,7 +16,6 @@ const HomeView = () => {
   const getPosts = async () => {
     const response = await getPostsFromApi();
     setPosts(response.data);
-    console.log(response.data);
   }
 
   return (
