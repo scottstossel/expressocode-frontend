@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import NavBar from './components/NavBar';
@@ -10,6 +9,11 @@ import LoginView from './views/LoginView';
 import SignUpView from './views/SignUpView';
 import AddPostView from './views/AddPostView';
 import AuthRoute from './components/AuthRoute';
+import TestCommentView from './views/TestCommentView';
+import EditCommentsView from './views/EditCommentsView';
+import AdminRoute from './components/AdminRoute';
+import EditPostsView from './views/EditPostsView';
+import './App.css';
 
 function App() {
   return (
@@ -23,6 +27,9 @@ function App() {
         <Route exact path="/login" component={LoginView}/>
         <Route exact path="/signup" component={SignUpView}/>
         <AuthRoute exact path="/createpost" component={AddPostView}/>
+        <AdminRoute exact path="/editcomments" component={EditCommentsView}/>
+        <AdminRoute exact path="/editposts" component={EditPostsView}/>
+        <AuthRoute exact path="/testcomment" component={TestCommentView}/>
       </Switch>
       <Footer />
     </BrowserRouter>

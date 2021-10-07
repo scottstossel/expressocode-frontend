@@ -6,11 +6,12 @@ const apiHelper = axios.create({baseURL});
 
 apiHelper.interceptors.request.use(
   async (config) => {
-    let jwt_user;
     let token;
 
     try {
-      token = await JSON.parse(localStorage.getItem('jwtexpressocode'));
+      const jwt_data = await JSON.parse(localStorage.getItem('jwtexpressocode'));
+      token = jwt_data.token;
+
     } catch (error) {
       console.log(error);
     }

@@ -9,18 +9,24 @@ const NavBar = () => {
 
   useEffect(() => {
     getTopics();
-  }, [])
+  }, []);
 
   const getTopics = async () => {
     const response = await getTopicsFromApi();
     setTopics(response.data);
-  }
+  };
 
   return (
     <>
       <Navbar bg="dark" expand="lg" fixed="top">
-        <Container>
-          <span style={{display: 'flex', alignItems: 'center'}}>
+        <Container style={{marginRight: '5px'}}>
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          >
             <Navbar.Brand href="/">
               <img
                 src={logo}
@@ -30,22 +36,52 @@ const NavBar = () => {
                 alt="React Bootstrap logo"
               />
             </Navbar.Brand>
-            <Navbar.Brand href="/" style={{ color: "white" }}>
+            <Navbar.Brand href="/" style={{ color: "#faedcd" }}>
               Expresso Code
             </Navbar.Brand>
           </span>
-          <NavDropdown title="Topics" id="basic-nav-dropdown">
-                {topics && topics.map(topic => {
-                  return <NavDropdown.Item key={topic._id} href={`/topic/${topic._id}`}>
+          <NavDropdown
+            style={{ color: "#faedcd" }}
+            title="Topics"
+            id="collaspible-nav-dropdown"
+          >
+            {topics &&
+              topics.map((topic) => {
+                return (
+                  <NavDropdown.Item
+                    key={topic._id}
+                    href={`/topic/${topic._id}`}
+                  >
                     {topic.name}
                   </NavDropdown.Item>
-                })}
+                );
+              })}
           </NavDropdown>
-          <Nav.Link href="/posts">All Posts</Nav.Link>
-          <Nav.Link href="/createpost">Create Post</Nav.Link>
-          <Button variant="outline-secondary" href="/login">Log In</Button>{" "}
-          <Button variant="secondary" href="/signup">Sign Up</Button>{" "}
-          <Button variant="info" onClick={logOut}>Log Out</Button>{" "}
+          <Nav.Link style={{ color: "#faedcd" }} href="/posts">
+            All Posts
+          </Nav.Link>
+          <Nav.Link style={{ color: "#faedcd" }} href="/createpost">
+            Create Post
+          </Nav.Link>
+          <span style={{display: 'flex', justifyContent: 'flex-end'}}>
+            <Button variant="outline-info" href="/login" style={{marginRight: '5px'}}>
+              Log In
+            </Button>{" "}
+            <Button
+              variant="dark"
+              style={{ backgroundColor: "#faedcd", color: "black", marginRight: '5px' }}
+              href="/signup"
+            >
+              Sign Up
+            </Button>{" "}
+            <Button
+              style={{ backgroundColor: "#d4a373", marginRight: '5px' }}
+              variant="dark"
+              onClick={logOut}
+            >
+              Log Out
+            </Button>{" "}
+          </span>
         </Container>
       </Navbar>
     </>

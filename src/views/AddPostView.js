@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import {EditorState} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { postPostToApi } from "../services/postServices";
+import { createPost } from "../services/postServices";
 import { getTopicsFromApi } from "../services/topicService";
 import { Editor } from "react-draft-wysiwyg";
 import DOMPurify from 'dompurify';
@@ -11,10 +11,10 @@ import { convertToHTML } from 'draft-convert';
 const AddPostView = () => {
   const {user: {uid}} = JSON.parse(localStorage.getItem('jwtexpressocode'));
   const [topics, setTopics] = useState([]);
-  const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(),
-  );
-  const [convertedContent, setConvertedContent] = useState(null);
+  // const [editorState, setEditorState] = useState(
+  //   () => EditorState.createEmpty(),
+  // );
+  // const [convertedContent, setConvertedContent] = useState(null);
 
   const [post, setPost] = useState({
     title: "",
@@ -45,7 +45,7 @@ const AddPostView = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    postPostToApi(post);
+    createPost(post);
     setPost({
       title: "",
       content: "",
@@ -56,22 +56,22 @@ const AddPostView = () => {
     alert("Submitted post");
   };
 
-  const handleEditorChange = (state) => {
-    setEditorState(state);
-    convertContentToHTML();
-    console.log(convertedContent)
-  }
+  // const handleEditorChange = (state) => {
+  //   setEditorState(state);
+  //   convertContentToHTML();
+  //   console.log(convertedContent)
+  // }
 
-  const convertContentToHTML = () => {
-    let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
-    setConvertedContent(currentContentAsHTML);
-  }
+  // const convertContentToHTML = () => {
+  //   let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+  //   setConvertedContent(currentContentAsHTML);
+  // }
 
-  const createMarkup = (html) => {
-    return {
-      __html: DOMPurify.sanitize(html)
-    }
-  }
+  // const createMarkup = (html) => {
+  //   return {
+  //     __html: DOMPurify.sanitize(html)
+  //   }
+  // }
 
   return (
     <div className="container" style={{ margin: "80px 10%" }}>
@@ -108,7 +108,16 @@ const AddPostView = () => {
                 onChange={handleChange}
               />
             </div>
-            <div style={{ marginTop: "6px", height: '300px' }}>
+            <div style={{marginTop: '6px'}}>
+              <input style={{width: '500px'}}
+                type="text"
+                name="content"
+                placeholder="content"
+                value={post.content}
+                onChange={handleChange}
+              />
+            </div>
+            {/* <div style={{ marginTop: "6px", height: '300px' }}>
               <Editor 
                 editorState={editorState}
                 onEditorStateChange={handleEditorChange}
@@ -116,14 +125,14 @@ const AddPostView = () => {
                 placeholder="post body"
                 value={post.content}
               />
-            </div>
+            </div> */}
             <Button onClick={handleSubmit} style={{ marginTop: "6px" }}>
               Submit Post
             </Button>
           </form>
         </Card.Body>
       </Card>
-      <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div>
+      {/* <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div> */}
     </div>
   );
 };

@@ -3,7 +3,6 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 export const loginUserToApi = async (user) => {
 
-
   try {
     const response = await axios.post(`${apiUrl}/user/login`, user);
     const { data } = response;
