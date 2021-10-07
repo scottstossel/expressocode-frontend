@@ -37,7 +37,7 @@ const SingleTopicView = ({ match }) => {
       )}
       {posts &&
         posts.map((post) => {
-          if (post.topic._id == topic._id) {
+          if (post.topic._id == id) {
             return (
               <>
                 <PostCard post={post} />

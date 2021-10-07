@@ -28,20 +28,6 @@ const HomeView = () => {
           </p>
         </div>
       </div>
-      <div className="featured">
-        <FeaturedCard />
-      </div>
-      <Container>
-      <Row xs={4} md={2} className="g-4">
-        {posts && posts.map((post) => (
-          <div key={post._id}>
-            <Col>
-              <PostCard post={post} />
-            </Col>
-          </div>
-        ))}
-      </Row>
-      </Container>
     </div>
   );
 };

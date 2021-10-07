@@ -100,16 +100,7 @@ const AddPostView = () => {
               />
             </div>
             <div style={{marginTop: '6px'}}>
-              <input style={{width: '500px'}}
-                type="text"
-                name="summary"
-                placeholder="summary"
-                value={post.summary}
-                onChange={handleChange}
-              />
-            </div>
-            <div style={{marginTop: '6px'}}>
-              <input style={{width: '500px'}}
+              <textarea style={{width: '500px', height: '200px'}}
                 type="text"
                 name="content"
                 placeholder="content"

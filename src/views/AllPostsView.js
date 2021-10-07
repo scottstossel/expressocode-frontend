@@ -19,8 +19,8 @@ const AllPostsView = () => {
   }
 
   return (
-    <div className="all-posts">
-      <Row xs={4} md={2} className="g-4">
+    <div className="all-posts" style={{marginTop: '80px'}}>
+      <Row xs={6} md={1} className="g-4">
         {posts && posts.map((post) => (
           <div key={post._id}>
             <Col>

@@ -6,7 +6,7 @@ import { getTopicsFromApi } from "../services/topicService";
 
 const NavBar = () => {
   const [topics, setTopics] = useState([]);
-
+  
   useEffect(() => {
     getTopics();
   }, []);
@@ -25,6 +25,7 @@ const NavBar = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-start",
+              marginLeft: '-100px'
             }}
           >
             <Navbar.Brand href="/">
@@ -41,10 +42,14 @@ const NavBar = () => {
             </Navbar.Brand>
           </span>
           <NavDropdown
-            style={{ color: "#faedcd" }}
+            style={{ color: "white" }}
             title="Topics"
-            id="collaspible-nav-dropdown"
+            id="basic-nav-dropdown"
           >
+          <NavDropdown.Item 
+          href='/topics'>
+            All Topics
+          </NavDropdown.Item>
             {topics &&
               topics.map((topic) => {
                 return (
@@ -62,6 +67,9 @@ const NavBar = () => {
           </Nav.Link>
           <Nav.Link style={{ color: "#faedcd" }} href="/createpost">
             Create Post
+          </Nav.Link>
+          <Nav.Link style={{ color: "#faedcd" }} href="/admin">
+            Admin Home
           </Nav.Link>
           <span style={{display: 'flex', justifyContent: 'flex-end'}}>
             <Button variant="outline-info" href="/login" style={{marginRight: '5px'}}>

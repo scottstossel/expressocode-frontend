@@ -1,7 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import NavBar from './components/NavBar';
-import Footer from './components/Footer';
 import AllPostsView from './views/AllPostsView';
 import SinglePostView from './views/SinglePostView';
 import SingleTopicView from './views/SingleTopicView';
@@ -9,11 +8,13 @@ import LoginView from './views/LoginView';
 import SignUpView from './views/SignUpView';
 import AddPostView from './views/AddPostView';
 import AuthRoute from './components/AuthRoute';
-import TestCommentView from './views/TestCommentView';
 import EditCommentsView from './views/EditCommentsView';
 import AdminRoute from './components/AdminRoute';
 import EditPostsView from './views/EditPostsView';
 import './App.css';
+import TopicsView from "./views/TopicsView";
+import AdminHomeView from "./views/AdminHomeView";
+import EditTopicsView from "./views/EditTopicsView";
 
 function App() {
   return (
@@ -26,12 +27,13 @@ function App() {
         <Route exact path="/topic/:_id" component={SingleTopicView}/>
         <Route exact path="/login" component={LoginView}/>
         <Route exact path="/signup" component={SignUpView}/>
+        <Route exact path="/topics" component={TopicsView}/>
         <AuthRoute exact path="/createpost" component={AddPostView}/>
+        <AdminRoute exact path="/admin" component={AdminHomeView}/>
         <AdminRoute exact path="/editcomments" component={EditCommentsView}/>
         <AdminRoute exact path="/editposts" component={EditPostsView}/>
-        <AuthRoute exact path="/testcomment" component={TestCommentView}/>
+        <AdminRoute exact path="/edittopics" component={EditTopicsView}/>
       </Switch>
-      <Footer />
     </BrowserRouter>
 
   ) 

@@ -5,8 +5,8 @@ import {
   getCommentsFromApi,
   postCommentToApi,
 } from "../services/commentService";
-import { Card, Button } from "react-bootstrap";
-import {BiLike} from 'react-icons/bi';
+import { Card, Button, Row, Col } from "react-bootstrap";
+import { BiLike } from "react-icons/bi";
 
 const SinglePostView = ({ match }) => {
   const [post, setPost] = useState([]);
@@ -31,12 +31,12 @@ const SinglePostView = ({ match }) => {
     getComments();
   }, []);
 
-//get post from api
+  //get post from api
   const getSinglePost = async () => {
     const response = await getSinglePostFromApi(id);
     setPost(response.data);
   };
-//handle submit for commenting
+  //handle submit for commenting
   const handleSubmit = async (event) => {
     event.preventDefault();
     postCommentToApi(comment);
@@ -54,7 +54,7 @@ const SinglePostView = ({ match }) => {
     });
   };
 
-//get comments from api
+  //get comments from api
   const getComments = async () => {
     const response = await getCommentsFromApi();
     // console.log(data);
@@ -63,23 +63,56 @@ const SinglePostView = ({ match }) => {
 
   return (
     <div className="SinglePost">
-    {/* display post */}
-      {post && post.topic && post.user && (
-        <>
-          <h2 className="post-title">{post.title}</h2>
-          <p>Likes: {post.likes}</p>
-          <p>Author: {post.user.username}</p>
-          <p>{post.topic.name}</p>
-          <p>{post.updatedAt}</p>
-          <p>{post.content}</p>
-        </>
-      )}
-      {/* like button */}
-      <Button>Like Post <BiLike /></Button>
+    {/* display post  */}
 
+      <Row xs={6} md={1} className="g-4">
+        <Col>
+          {post && post.topic && post.user && (
+            <Card
+              style={{
+                backgroundColor: "#474853",
+                display: "flex",
+                marginTop: "10px",
+              }}
+            >
+              <Card.Body style={{ color: "#AAA0A0" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignContent: "center",
+                  }}
+                >
+                  <Card.Title style={{ fontSize: "30px" }}>
+                    {post.title}
+                  </Card.Title>
+                  <p>{post.updatedAt}</p>
+                </span>
+                <p>{post.content}</p>
+                <blockquote className="blockquote mb-0">
+                  <footer className="blockquote-footer">
+                    {post.user.username}{" "}
+                  </footer>
+                </blockquote>
+                <p>Likes 👍 : {post.likes}</p>
+                <Button
+                  style={{
+                    backgroundColor: "#86b3d1",
+                    color: "#474853",
+                    border: "none",
+                    marginTop: "5px",
+                  }}
+                >
+                  Like Post 👍
+                </Button>
+              </Card.Body>
+            </Card>
+          )}
+        </Col>
+      </Row>
       {/* create comment */}
 
-      <div style={{marginTop: '10px'}}>
+      <div style={{ marginTop: "10px" }}>
         <Card className="text-center">
           <Card.Header>Comment</Card.Header>
           <Card.Body>
@@ -101,7 +134,7 @@ const SinglePostView = ({ match }) => {
           </Card.Body>
         </Card>
       </div>
-      
+
       {/* displaying comments of respective post */}
       <div>
         {comments &&
@@ -113,13 +146,9 @@ const SinglePostView = ({ match }) => {
                     <Card.Header>{c.updatedAt}</Card.Header>
                     <Card.Body>
                       <blockquote className="blockquote mb-0">
-                        <p>
-                          {" "}
-                          {c.content}{" "}
-                        </p>
+                        <p> {c.content} </p>
                         <footer className="blockquote-footer">
-                          {c.user.username}{" "}
-                          <cite title="Source Title"></cite>
+                          {c.user.username} <cite title="Source Title"></cite>
                         </footer>
                       </blockquote>
                     </Card.Body>
