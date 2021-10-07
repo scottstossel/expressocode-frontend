@@ -34,5 +34,6 @@ export const isAuthenticated = () => {
 
 export const logOut = async () => {
   await localStorage.removeItem('jwtexpressocode');
+  window.location.reload();
   alert("Logged Out Successfully");
 }

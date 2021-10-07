@@ -40,9 +40,20 @@ const TopicsView = () => {
   };
 
   return (
-    <div className="container" style={{ marginTop: "80px" }}>
+    <div
+      className="container"
+      style={{
+        marginTop: "80px",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <h2>Topics List</h2>
-      <Card className="text-center" style={{ width: "700px", marginTop: '20px' }}>
+      <Card
+        className="text-center"
+        style={{ width: "700px", marginTop: "20px", marginBottom: '10px' }}
+      >
         <Card.Header>Create new discussion topic:</Card.Header>
         <Card.Body>
           <form>
@@ -76,17 +87,36 @@ const TopicsView = () => {
           </form>
         </Card.Body>
       </Card>
-      <div style={{ marginTop: "20px", marginBottom: '10px' }}>
+      <div style={{ marginTop: "20px", marginBottom: "10px" }}>
         {topics &&
           topics.map((topic) => (
             <div key={topic._id}>
-              <Card style={{ marginTop: "10px", backgroundColor: '#474853', color: '#aaa0a0' }}>
+              <Card
+                style={{
+                  marginTop: "10px",
+                  backgroundColor: "#474853",
+                  color: "#aaa0a0",
+                }}
+              >
                 <Card.Header>
-                  <a href={`/topic/${topic._id}`} style={{color: '#86b3d1', textDecoration: 'none'}}>{topic.name}</a>
+                  <a
+                    href={`/topic/${topic._id}`}
+                    style={{ color: "#86b3d1", textDecoration: "none" }}
+                  >
+                    {topic.name}
+                  </a>
                 </Card.Header>
                 <Card.Body>
                   <blockquote className="blockquote mb-0">
-                    <p> {topic.description} </p>
+                    <p>
+                      <a
+                        href={`/topic/${topic._id}`}
+                        style={{ textDecoration: "none", color: "#aaa0a0" }}
+                      >
+                        {" "}
+                        {topic.description}{" "}
+                      </a>
+                    </p>
                   </blockquote>
                 </Card.Body>
               </Card>

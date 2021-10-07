@@ -142,7 +142,7 @@ const SinglePostView = ({ match }) => {
             if (c.post._id == post._id) {
               return (
                 <div key={c._id}>
-                  <Card>
+                  <Card style={{marginTop: '10px'}}>
                     <Card.Header>{c.updatedAt}</Card.Header>
                     <Card.Body>
                       <blockquote className="blockquote mb-0">
