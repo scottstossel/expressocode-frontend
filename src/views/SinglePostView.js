@@ -51,6 +51,7 @@ const SinglePostView = ({ match }) => {
     event.preventDefault();
     const response = await likePostToApi(id);
     setPost(response);
+    alert('Thanks for the like');
     window.location.reload();
   }
 
@@ -83,7 +84,7 @@ const SinglePostView = ({ match }) => {
                 marginTop: "10px",
               }}
             >
-              <Card.Body style={{ color: "#AAA0A0" }}>
+              <Card.Body style={{ color: "lightgrey" }}>
                 <span
                   style={{
                     display: "flex",
@@ -98,11 +99,11 @@ const SinglePostView = ({ match }) => {
                 </span>
                 <p>{post.content}</p>
                 <blockquote className="blockquote mb-0">
-                  <footer className="blockquote-footer">
+                  <footer className="blockquote-footer" style={{color: "lightgrey"}}>
                     {post.user.username}{" "}
                   </footer>
                 </blockquote>
-                <p>Likes 👍 : {post.likes.length}</p>
+                {post.likes && <p>Likes 👍 : {post.likes.length}</p>}
                 <Button
                   style={{
                     backgroundColor: "#86b3d1",
@@ -122,7 +123,7 @@ const SinglePostView = ({ match }) => {
       {/* create comment */}
 
       <div style={{ marginTop: "10px" }}>
-        <Card className="text-center">
+        <Card className="text-center" style={{backgroundColor: "#474853", color: 'lightgrey'}} >
           <Card.Header>Comment</Card.Header>
           <Card.Body>
             <form>
@@ -136,7 +137,12 @@ const SinglePostView = ({ match }) => {
                   onChange={handleChange}
                 />
               </div>
-              <Button onClick={handleSubmit} style={{ marginTop: "6px" }}>
+              <Button onClick={handleSubmit} style={{
+                    backgroundColor: "#86b3d1",
+                    color: "#474853",
+                    border: "none",
+                    marginTop: "10px"
+                  }}>
                 Submit Comment
               </Button>
             </form>
@@ -148,10 +154,10 @@ const SinglePostView = ({ match }) => {
       <div>
         {comments &&
           comments.map((c) => {
-            if (c.post._id == post._id) {
+            if (c.post && c.post._id == id) {
               return (
                 <div key={c._id}>
-                  <Card style={{marginTop: '10px'}}>
+                  <Card style={{marginTop: '10px', backgroundColor: "#474853", color: 'lightgrey'}}>
                     <Card.Header>{new Date(c.createdAt).toISOString().split('T')[0]}</Card.Header>
                     <Card.Body>
                       <blockquote className="blockquote mb-0">

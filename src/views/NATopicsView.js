@@ -34,7 +34,7 @@ const NATopicsView = () => {
                 style={{
                   marginTop: "10px",
                   backgroundColor: "#474853",
-                  color: "#aaa0a0",
+                  color: 'lightgrey',
                 }}
               >
                 <Card.Header>
@@ -50,7 +50,7 @@ const NATopicsView = () => {
                     <p>
                       <a
                         href={`/topicslist/${topic._id}`}
-                        style={{ textDecoration: "none", color: "#aaa0a0" }}
+                        style={{ textDecoration: "none", color: "lightgrey" }}
                       >
                         {" "}
                         {topic.description}{" "}

@@ -52,7 +52,7 @@ const TopicsView = () => {
       <h2>Topics List</h2>
       <Card
         className="text-center"
-        style={{ width: "700px", marginTop: "20px", marginBottom: '10px' }}
+        style={{ width: "700px", marginTop: "20px", marginBottom: '10px', backgroundColor: "#474853", color: 'lightgrey' }}
       >
         <Card.Header>Create new discussion topic:</Card.Header>
         <Card.Body>
@@ -80,7 +80,7 @@ const TopicsView = () => {
             <Button
               onClick={handleSubmit}
               style={{ marginTop: "6px" }}
-              variant="outline-primary"
+              variant="primary"
             >
               Submit Topic
             </Button>
@@ -111,7 +111,7 @@ const TopicsView = () => {
                     <p>
                       <a
                         href={`/topic/${topic._id}`}
-                        style={{ textDecoration: "none", color: "#aaa0a0" }}
+                        style={{ textDecoration: "none", color: "lightgrey" }}
                       >
                         {" "}
                         {topic.description}{" "}

@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import {EditorState} from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { createPost } from "../services/postServices";
 import { getTopicsFromApi } from "../services/topicService";
-import { Editor } from "react-draft-wysiwyg";
-import DOMPurify from 'dompurify';
-import { convertToHTML } from 'draft-convert';
 
 const AddPostView = () => {
   const {user: {uid}} = JSON.parse(localStorage.getItem('jwtexpressocode'));
@@ -54,7 +50,7 @@ const AddPostView = () => {
 
   return (
     <div className="container" style={{ marginTop: "100px", display: 'flex', justifyContent: 'center' }}>
-      <Card className="text-center" style={{ width: "700px" }}>
+      <Card className="text-center" style={{ width: "700px", backgroundColor: "#474853", color: 'lightgrey' }}>
         <Card.Header>Create Post</Card.Header>
         <Card.Body>
           <form>

@@ -30,7 +30,7 @@ const LoginView = () => {
 
   return (
     <div className="container" style={{marginTop: '100px', display: 'flex', justifyContent: 'center'}}>
-      <Card className="text-center" style={{width: '500px'}}>
+      <Card className="text-center" style={{width: '500px', backgroundColor: "#474853", color: 'lightgrey'}}>
         <Card.Header>Login Here</Card.Header>
         <Card.Body>
           <form>

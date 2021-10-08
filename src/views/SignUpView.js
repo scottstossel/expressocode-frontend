@@ -30,7 +30,7 @@ const SignUpView = () => {
 
   return (
     <div className="container" style={{marginTop: "80px", display: 'flex', justifyContent: 'center'}}>
-      <Card className="text-center" style={{ width: "500px" }}>
+      <Card className="text-center" style={{ width: "500px", backgroundColor: "#474853", color: 'lightgrey' }}>
         <Card.Header>Sign Up Here</Card.Header>
         <Card.Body>
         <p>Want to view/create comments and join the discussion?</p>
@@ -66,7 +66,7 @@ const SignUpView = () => {
             <Button onClick={handleSubmit} style={{marginTop: "6px"}}>Create an account</Button>
           </form>
         </Card.Body>
-        <Card.Footer className="text-muted">Already have an account? <a href="/login">Login here.</a></Card.Footer>
+        <Card.Footer className="text-muted" style={{ backgroundColor: 'lightgrey' }}>Already have an account? <a href="/login">Login here.</a></Card.Footer>
       </Card>
     </div>
   );

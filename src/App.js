@@ -17,7 +17,6 @@ import AdminHomeView from "./views/AdminHomeView";
 import EditTopicsView from "./views/EditTopicsView";
 import NotAuthRoute from "./components/NotAuthRoute";
 import NotAuthTestView from "./NotAuthTestView";
-import NASinglePostView from "./views/NASinglePostView";
 import NATopicsView from "./views/NATopicsView";
 
 function App() {
