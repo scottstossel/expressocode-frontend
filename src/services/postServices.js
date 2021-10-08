@@ -36,6 +36,14 @@ export const updatePostToApi = async (post) => {
   return response;
 }
 
+export const likePostToApi = async (postId) => {
+  const token = JSON.parse(localStorage.getItem('jwtexpressocode'));
+  const uid = token.user.uid;
+  console.log(uid);
+  const response = await apiHelper.put(`/post/post/like/${postId}`, {userId: uid});
+  return response;
+}
+
 export const deletePostFromApi = async (id) => {
   const { token } = JSON.parse(localStorage.getItem('jwtexpressocode'));
   const response = await axios.delete(`${apiUrl}/post/post/${id}`, {

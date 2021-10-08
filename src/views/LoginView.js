@@ -29,7 +29,7 @@ const LoginView = () => {
   };
 
   return (
-    <div className="container" style={{marginTop: '80px'}}>
+    <div className="container" style={{marginTop: '100px', display: 'flex', justifyContent: 'center'}}>
       <Card className="text-center" style={{width: '500px'}}>
         <Card.Header>Login Here</Card.Header>
         <Card.Body>

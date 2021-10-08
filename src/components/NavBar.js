@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 import logo from "../images/logo.png";
 import { isAuthenticated, logOut } from "../services/authService";
-import { getTopicsFromApi } from "../services/topicService";
 
 const NavBar = () => {
   return (
@@ -30,9 +28,15 @@ const NavBar = () => {
               Expresso Code
             </Navbar.Brand>
           </span>
+          {isAuthenticated() ? (
           <Nav.Link style={{ color: "#faedcd" }} href="/topics">
             Topics
           </Nav.Link>
+          ) : (
+            <Nav.Link style={{ color: "#faedcd" }} href="/topicslist">
+            Topics
+          </Nav.Link>
+          )}
           <Nav.Link style={{ color: "#faedcd" }} href="/posts">
             All Posts
           </Nav.Link>

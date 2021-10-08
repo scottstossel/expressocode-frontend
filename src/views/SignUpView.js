@@ -29,11 +29,12 @@ const SignUpView = () => {
   };
 
   return (
-    <div className="container" style={{marginTop: "80px"}}>
+    <div className="container" style={{marginTop: "80px", display: 'flex', justifyContent: 'center'}}>
       <Card className="text-center" style={{ width: "500px" }}>
         <Card.Header>Sign Up Here</Card.Header>
         <Card.Body>
-        <p>Want to join the discussion?</p>
+        <p>Want to view/create comments and join the discussion?</p>
+        <p>Create an account here.</p>
           <form>
             <div>
               <input
@@ -62,7 +63,7 @@ const SignUpView = () => {
                 name="password"
               />
             </div>
-            <Button onClick={handleSubmit} style={{marginTop: "6px"}}>Login</Button>
+            <Button onClick={handleSubmit} style={{marginTop: "6px"}}>Create an account</Button>
           </form>
         </Card.Body>
         <Card.Footer className="text-muted">Already have an account? <a href="/login">Login here.</a></Card.Footer>

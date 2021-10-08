@@ -11,10 +11,6 @@ import { convertToHTML } from 'draft-convert';
 const AddPostView = () => {
   const {user: {uid}} = JSON.parse(localStorage.getItem('jwtexpressocode'));
   const [topics, setTopics] = useState([]);
-  // const [editorState, setEditorState] = useState(
-  //   () => EditorState.createEmpty(),
-  // );
-  // const [convertedContent, setConvertedContent] = useState(null);
 
   const [post, setPost] = useState({
     title: "",
@@ -56,25 +52,8 @@ const AddPostView = () => {
     alert("Submitted post");
   };
 
-  // const handleEditorChange = (state) => {
-  //   setEditorState(state);
-  //   convertContentToHTML();
-  //   console.log(convertedContent)
-  // }
-
-  // const convertContentToHTML = () => {
-  //   let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
-  //   setConvertedContent(currentContentAsHTML);
-  // }
-
-  // const createMarkup = (html) => {
-  //   return {
-  //     __html: DOMPurify.sanitize(html)
-  //   }
-  // }
-
   return (
-    <div className="container" style={{ margin: "80px 10%" }}>
+    <div className="container" style={{ marginTop: "100px", display: 'flex', justifyContent: 'center' }}>
       <Card className="text-center" style={{ width: "700px" }}>
         <Card.Header>Create Post</Card.Header>
         <Card.Body>
@@ -108,22 +87,13 @@ const AddPostView = () => {
                 onChange={handleChange}
               />
             </div>
-            {/* <div style={{ marginTop: "6px", height: '300px' }}>
-              <Editor 
-                editorState={editorState}
-                onEditorStateChange={handleEditorChange}
-                name="content"
-                placeholder="post body"
-                value={post.content}
-              />
-            </div> */}
             <Button onClick={handleSubmit} style={{ marginTop: "6px" }}>
               Submit Post
             </Button>
           </form>
         </Card.Body>
       </Card>
-      {/* <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div> */}
+
     </div>
   );
 };
